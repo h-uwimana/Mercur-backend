@@ -3,6 +3,14 @@ import { defineConfig, loadEnv } from '@medusajs/framework/utils'
 loadEnv(process.env.NODE_ENV || 'development', process.cwd())
 
 module.exports = defineConfig({
+  admin: {
+    backendUrl: process.env.MEDUSA_BACKEND_URL,
+    vite: () => ({
+      server: {
+        allowedHosts: ["intare.nl"],
+      }
+    })
+  },
   projectConfig: {
     databaseUrl: process.env.DATABASE_URL,
     http: {
